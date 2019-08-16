@@ -1,8 +1,10 @@
 # DigitalOcean Droplet Deployment Manual
 By Thomas Castleman
 
+*Note: PDF version of manual also available in `manual.pdf`. To copy text from the PDF, download it first.*
+
 ## Getting Started
-Once you’ve started a new droplet instance through your DigitalOcean account online, SSH into the root user:
+Once you’ve started a new droplet instance through your [DigitalOcean](https://www.digitalocean.com/) account online, SSH into the root user:
 ```bash
 ssh root@<DROPLET IP>
 ```

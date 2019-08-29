@@ -71,7 +71,6 @@ Install some essentials:
 apt-get install build-essential
 apt-get install curl
 apt-get install git
-apt-get install monit
 apt-get install authbind
 ```
 

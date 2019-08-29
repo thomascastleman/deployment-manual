@@ -201,6 +201,31 @@ chmod 755 80
 
 **If you want to set up multiple services running on different subdomains, however, see the later section regarding Apache.**
 
+## Using Monit to Keep Services Online
+First, install Monit:
+```bash
+sudo apt-get install monit
+```
+
+To start monitoring a service, create a file under the service name in `/etc/monit/conf.d/` with the following form:
+```
+check castleman-space with pidfile /var/run/castleman-space.pid
+    start program = "/etc/init.d/castleman-space start"
+    stop program = "/etc/init.d/castleman-space stop"
+    restart program = "/etc/init.d/castleman-space restart"
+
+if failed host castleman.space port 7777 protocol HTTP request / with timeout 10 seconds then restart
+```
+
+This example monitors the service `castleman-space`, which runs on port 7777. You should create a file like this for any and all services you would like to monitor.
+
+To apply the updates, reload Monit:
+```bash
+sudo monit reload
+```
+
+Monit should now monitor the indicated services and bring them back online if they crash.
+
 ## DNS Records
 Once you have registered a domain name through a domain name registrar like [Gandi.net](https://www.gandi.net/), go to your domain’s dashboard.
 
